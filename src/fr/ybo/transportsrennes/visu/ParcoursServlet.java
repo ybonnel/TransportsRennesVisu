@@ -13,7 +13,7 @@ import fr.ybo.transportsrennes.visu.modele.Parcour;
 import fr.ybo.transportsrennes.visu.modele.ParcoursManager;
 
 @SuppressWarnings("serial")
-public class TransportsRennesVisuServlet extends HttpServlet {
+public class ParcoursServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		String lineId = "";

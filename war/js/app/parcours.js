@@ -13,7 +13,7 @@ function ListParcoursCtrl($scope, Parcour) {
 
 angular.module('requestParcours', ['ngResource']).
 	factory('Parcour', function($resource) {
-		var Parcour = $resource('/visu/data/0003');
+		var Parcour = $resource('/data/parcours/0003');
 
 		return Parcour;
 	});
