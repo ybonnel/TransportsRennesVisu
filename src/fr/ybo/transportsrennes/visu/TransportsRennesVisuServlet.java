@@ -26,7 +26,7 @@ public class TransportsRennesVisuServlet extends HttpServlet {
 			resp.setContentType("text/plain");
 			resp.getWriter().println(lineId + " doesn't exists");
 		} else {
-			resp.setContentType("application/json");
+			resp.setContentType("application/json; charset=UTF-8");
 			Gson gson = new Gson();
 			resp.getWriter().println(gson.toJson(parcours));
 		}
