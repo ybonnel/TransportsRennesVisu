@@ -1,0 +1,66 @@
+
+
+.parcour {
+	background: #f5f5f5;
+	border: solid #666;
+	border-width: 8px 0 2px 0;
+	width: 400px;
+}
+
+.ligneName {
+	display: block;
+	text-align:center;
+	font-size:200%;
+	color: #444;
+}
+
+.headSign {
+	display: block;
+	text-align:center;
+	font-size:120%;
+	color: #444;
+}
+
+.stops {
+	display: block;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.stop {
+	display: block;
+	background-image: url("img/ligne.png");
+	background-repeat:no-repeat;
+	background-position:50% 0%;
+	height:70px;
+	font-size:120%;
+	color: #444;
+}
+
+.stops .first {
+	background-image: url("img/lignedebut.png");
+}
+.stops .last {
+	background-image: url("img/lignefin.png");
+}
+
+.bus {
+	display: block;
+	height:50px;
+	width:100%;
+	background-image: url("img/bus.png");
+	background-repeat:no-repeat;
+	background-position:65% 50%;
+}
+
+.name {
+	display: block;
+	padding-left:55%;
+	padding-top:1.3em;
+	text-align:left;
+}
+
+.bus {
+	
+}
