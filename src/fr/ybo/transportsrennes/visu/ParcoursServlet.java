@@ -1,7 +1,6 @@
 package fr.ybo.transportsrennes.visu;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServlet;
@@ -16,8 +15,6 @@ import fr.ybo.transportsrennes.visu.modele.ParcoursManager;
 @SuppressWarnings("serial")
 public class ParcoursServlet extends HttpServlet {
 	
-	private static final String defaultCharset = Charset.defaultCharset().displayName();
-	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		String lineId = "";
@@ -30,7 +27,7 @@ public class ParcoursServlet extends HttpServlet {
 			resp.setContentType("text/plain");
 			resp.getWriter().println(lineId + " doesn't exists");
 		} else {
-			resp.setContentType("application/json; charset=" + defaultCharset);
+			resp.setContentType("application/json");
 			Gson gson = new Gson();
 			resp.getWriter().println(gson.toJson(parcours));
 		}

@@ -10,6 +10,6 @@ public class Constantes {
 	 */
 	public static final int READ_TIMEOUT = 20000;
 
-	public static final boolean BOUCHON = true;
+	public static final boolean BOUCHON = false;
 
 }
