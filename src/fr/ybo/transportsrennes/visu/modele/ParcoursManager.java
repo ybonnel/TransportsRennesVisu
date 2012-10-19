@@ -3,6 +3,7 @@ package fr.ybo.transportsrennes.visu.modele;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,7 @@ public enum ParcoursManager {
 				Type collectionType = new TypeToken<List<Parcour>>() {
 				}.getType();
 				List<Parcour> parcoursJson = gson.fromJson(
-						new InputStreamReader(stream), collectionType);
+						new InputStreamReader(stream, Charset.forName("utf-8")), collectionType);
 
 				parcours = ArrayListMultimap.create();
 				for (Parcour parcour : parcoursJson) {

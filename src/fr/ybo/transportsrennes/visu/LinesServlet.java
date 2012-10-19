@@ -9,8 +9,10 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,16 +35,18 @@ public class LinesServlet extends HttpServlet {
 		Map<String, String> lineIdByLineName = ParcoursManager.INSTANCE.getLineIdByLineName();
 		
 		ReponseApi reponseApi = getReponseApi();
-
+		Set<String> lineIds = new HashSet<String>();
 		List<Ligne> lignes = new ArrayList<Ligne>();
 		String baseUrl = reponseApi.getOpendata().getAnswer().getData().getBaseurl();
 		for (Line line : reponseApi.getOpendata().getAnswer().getData().getLine()) {
-			if (lineIdByLineName.containsKey(line.getName())) {
+			if (lineIdByLineName.containsKey(line.getName())
+					&& !lineIds.contains(lineIdByLineName.get(line.getName()))) {
 				Ligne ligne = new Ligne();
 				ligne.setLineId(lineIdByLineName.get(line.getName()));
 				ligne.setLineName(line.getName());
 				ligne.setPictoUrl(baseUrl + line.getPicto());
 				lignes.add(ligne);
+				lineIds.add(ligne.getLineId());
 			}
 		}
 		

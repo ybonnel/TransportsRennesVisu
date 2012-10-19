@@ -7,17 +7,35 @@ angular.module('parcour', ['requestParcours', 'requestLignes']).
 			otherwise({redirectTo:'/'});
 	});
 
+
+
+function updatePositionBus() {
+	window.setTimeout(function() {
+		$('.parcour').each(function (index, value) {
+			id = $(value).attr('id').split('_');
+			lineId = id[0];
+			macroDirection = id[1];
+			updateBusInDom(lineId, macroDirection);
+		});
+	}, 500);
+	
+	window.setTimeout(updatePositionBus, 10000);
+}
+
+function updateBusInDom(lineId, macroDirection) {
+	$.getJSON('/data/positionbus/' + lineId + '/' + macroDirection, function(data) {
+		$('#' + lineId + "_" + macroDirection + ' span.bus').removeClass('bus');
+		$.each(data, function(index, value){
+			$('#' + lineId + '_' + macroDirection + '_' + value + '_bus').addClass('bus');
+		});
+	});
+}
+
 function ListParcoursCtrl($scope, $routeParams, Parcour) {
 	
 	$scope.parcours = Parcour.query({lineId:$routeParams.lineId});
 	
-	$scope.updatePositionBus = function(lineId, macroDirection) {
-		$.getJSON('/data/positionbus/' + lineId + '/' + macroDirection, function(data) {
-			$.each(data, function(index, value){
-				$('#' + lineId + '_' + macroDirection + '_' + value + '_bus').addClass('bus');
-			});
-		});
-	}
+	$scope.$on('$viewContentLoaded', updatePositionBus);
 }
 
 function IndexCtrl($scope, Lignes) {
@@ -39,4 +57,6 @@ angular.module('requestLignes', ['ngResource']).
 
 		return Lignes;
 	});
+
+
 	
