@@ -1,5 +1,5 @@
 
-angular.module('parcour', ['requestParcours']).
+angular.module('parcour', ['requestParcours', 'requestLignes']).
 	config(function($routeProvider) {
 		$routeProvider.
 			when('/', {controller:IndexCtrl, templateUrl:'listLignes.html'}).
@@ -20,8 +20,8 @@ function ListParcoursCtrl($scope, $routeParams, Parcour) {
 	}
 }
 
-function IndexCtrl($scope) {
-	
+function IndexCtrl($scope, Lignes) {
+	$scope.lignes = Lignes.query();
 	
 }
 
@@ -31,5 +31,12 @@ angular.module('requestParcours', ['ngResource']).
 		var Parcour = $resource('/data/parcours/:lineId');
 
 		return Parcour;
+	});
+
+angular.module('requestLignes', ['ngResource']).
+	factory('Lignes', function($resource) {
+		var Lignes = $resource('/data/lignes');
+
+		return Lignes;
 	});
 	

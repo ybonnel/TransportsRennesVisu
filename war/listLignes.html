@@ -1,5 +1,5 @@
 
 
-<div>
-	<h1>Où est mon bus : liste des lignes</h1>
+<div ng-repeat="ligne in lignes" class="ligne">
+	<a href="#/ligne/{{ligne.lineId}}"><img alt="Ligne {{ligne.lineName}}" src="{{ligne.pictoUrl}}"/></a>
 </div>

@@ -15,6 +15,14 @@
 		<servlet-name>PositionBus</servlet-name>
 		<url-pattern>/data/positionbus/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Lines</servlet-name>
+		<servlet-class>fr.ybo.transportsrennes.visu.LinesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Lines</servlet-name>
+		<url-pattern>/data/lignes</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

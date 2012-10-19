@@ -4,7 +4,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -41,6 +43,14 @@ public enum ParcoursManager {
 	
 	public Collection<Parcour> getParcoursForLineId(String lineId) {
 		return getParcours().get(lineId);
+	}
+	
+	public Map<String, String> getLineIdByLineName() {
+		Map<String, String> lineIdByLineName = new HashMap<String, String>();
+		for (Parcour parcour : getParcours().values()) {
+			lineIdByLineName.put(parcour.getLigneName(), parcour.getLigneId());
+		}
+		return lineIdByLineName;
 	}
 
 }

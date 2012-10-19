@@ -156,20 +156,9 @@ public class PositionBusServlet extends HttpServlet {
 		return monParcour;
 	}
 
-	/**
-	 * Timeout de connexion.
-	 */
-	private static final int CONNECT_TIMEOUT = 10000;
-	/**
-	 * Timeout de lecture.
-	 */
-	private static final int READ_TIMEOUT = 20000;
-
-	private static final boolean BOUCHON = false;
-
 	private static InputStream openInputStream(String lineId,
 			Integer macroDirection) {
-		if (BOUCHON) {
+		if (Constantes.BOUCHON) {
 			return PositionBusServlet.class
 					.getResourceAsStream("/fr/ybo/transportsrennes/visu/json/tempsReel"
 							+ macroDirection + ".json");
@@ -191,8 +180,8 @@ public class PositionBusServlet extends HttpServlet {
 		try {
 			URL myUrl = new URL(urlString.toString());
 			URLConnection connection = myUrl.openConnection();
-			connection.setConnectTimeout(CONNECT_TIMEOUT);
-			connection.setReadTimeout(READ_TIMEOUT);
+			connection.setConnectTimeout(Constantes.CONNECT_TIMEOUT);
+			connection.setReadTimeout(Constantes.READ_TIMEOUT);
 			return connection.getInputStream();
 		} catch (Exception exception) {
 			Throwables.propagate(exception);
