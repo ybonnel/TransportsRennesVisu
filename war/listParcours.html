@@ -1,6 +1,6 @@
 
 
-<div ng-repeat="parcour in parcours" id="{{parcour.ligneId}}_{{parcour.macroDirection}}" class="parcour">
+<div ng-repeat="parcour in parcours" id="{{parcour.ligneId}}_{{parcour.macroDirection}}" class="parcour" ng-init="updatePositionBus(parcour.ligneId, parcour.macroDirection);">
 	<span class="ligneName">Ligne {{parcour.ligneName}}</span>
 	<span class="headSign">Direction {{parcour.headSign}}</span>
 	<div class="stops">
@@ -8,6 +8,7 @@
 			id="{{parcour.ligneId}}_{{parcour.macroDirection}}_{{arret.stopId}}" 
 			class="stop {{{true:'first', false:''}[$index==0]}} {{{true:'last', false:''}[$index==parcour.stops.length-1]}}">
 			<span class="name">{{arret.stopName}}</span>
+	    	<span id="{{parcour.ligneId}}_{{parcour.macroDirection}}_{{arret.stopId}}_bus"> </span>
 		</div>
 	</div>
 </div>

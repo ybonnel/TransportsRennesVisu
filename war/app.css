@@ -3,8 +3,9 @@
 .parcour {
 	background: #f5f5f5;
 	border: solid #666;
-	border-width: 8px 0 2px 0;
+	border-width: 8px 1px 2px 1px;
 	width: 400px;
+	display: table-cell;
 }
 
 .ligneName {

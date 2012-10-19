@@ -7,6 +7,14 @@
 		<servlet-name>Parcours</servlet-name>
 		<url-pattern>/data/parcours/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>PositionBus</servlet-name>
+		<servlet-class>fr.ybo.transportsrennes.visu.PositionBusServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PositionBus</servlet-name>
+		<url-pattern>/data/positionbus/*</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

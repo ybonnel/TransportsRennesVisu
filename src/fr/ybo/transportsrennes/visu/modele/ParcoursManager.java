@@ -19,16 +19,22 @@ public enum ParcoursManager {
 
 	private Multimap<String, Parcour> getParcours() {
 		parcours = null;
-		if (parcours == null) {
-			Gson gson = new Gson();
-			InputStream stream = ParcoursManager.class.getResourceAsStream("/fr/ybo/transportsrennes/visu/json/data.json");
-			Type collectionType = new TypeToken<List<Parcour>>(){}.getType();
-			List<Parcour> parcoursJson = gson.fromJson(new InputStreamReader(stream), collectionType);
+		synchronized (this) {
+			if (parcours == null) {
+				Gson gson = new Gson();
+				InputStream stream = ParcoursManager.class
+						.getResourceAsStream("/fr/ybo/transportsrennes/visu/json/data.json");
+				Type collectionType = new TypeToken<List<Parcour>>() {
+				}.getType();
+				List<Parcour> parcoursJson = gson.fromJson(
+						new InputStreamReader(stream), collectionType);
 
-			parcours = ArrayListMultimap.create();
-			for (Parcour parcour : parcoursJson) {
-				parcours.put(parcour.getLigneId(), parcour);
+				parcours = ArrayListMultimap.create();
+				for (Parcour parcour : parcoursJson) {
+					parcours.put(parcour.getLigneId(), parcour);
+				}
 			}
+
 		}
 		return parcours;
 	}
